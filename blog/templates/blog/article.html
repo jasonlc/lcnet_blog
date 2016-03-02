@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% block main %}
+<div class="row">
+    <div id="lcnet-content" class="col-md-8 col-lg-9">
+        <div id="article-page" class="well">
+            <div id="article">
+                <div class="article-title">
+                    <h1>{{ article.title }}</h1>
+                </div>
+                <div class="article-tags">
+                    {% for tag in article.get_tags %}
+                        <a href="/tags/{{ tag }}">
+                            <span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            <hr/>
+            <div class="article-content">
+                {% autoescape off %}
+                    {{ article.content }}
+                {% endautoescape %}
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
