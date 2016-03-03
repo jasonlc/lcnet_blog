@@ -20,12 +20,32 @@ STATUS={
     1:u'草稿',
     2:'删除',
 }
+
+class Category(models.Model):
+    name=models.CharField(max_length=40,verbose_name=u'名称')
+    parent=models.ForeignKey('self',default=None,blank=True,null=True,verbose_name=u'上级分类')
+    rank=models.IntegerField(default=0,verbose_name=u'排名')
+    status=models.IntegerField(default=0,choices=STATUS.items(),verbose_name=u'状态')
+
+    create_time=models.DateTimeField(verbose_name=u'创建时间',auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural=verbose_name=u'分类'
+        ordering=['rank','-create_time']
+        app_label=string_with_title('blog',u'博客管理')
+
+    def __unicode__(self):
+        if self.parent:
+            return '%s-->%s'%(self.parent,self.name)
+        else:
+            return '%s'%(self.name)
+
 class Article(models.Model):
     # author=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name=u'作者')
-    # category=models.ForeignKey()
+    category=models.ForeignKey(Category,verbose_name=u'分类')
     title=models.CharField(max_length=100,verbose_name=u'标题')
     en_title=models.CharField(max_length=100,verbose_name=u'英文标题')
-    img=models.CharField(max_length=200,default='/static/img/article/default.jpg')
+    img=models.CharField(max_length=200,default='/static/img/article/default.jpg',verbose_name=u'图片')
     tags=models.CharField(max_length=200,null=True,blank=True,verbose_name=u'标签',help_text=u'用逗号分隔开')
     summary=models.TextField(verbose_name=u'摘要')
     content=models.TextField(verbose_name=u'正文')

@@ -1,14 +1,14 @@
 #encoding:utf-8
 from django.contrib import admin
-from blog.models import Article
+from blog.models import Article,Category
 
 class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title','summary')
-    list_filter = ('status','create_time','update_time','is_top')
-    list_display = ('title','status','is_top','update_time')
+    list_filter = ('status','category','create_time','update_time','is_top')
+    list_display = ('title','category','status','is_top','update_time')
     fieldsets = (
         (u'基本信息', {
-            'fields': ('title','en_title','img','tags','is_top','rank','status')
+            'fields': ('title','category','en_title','img','tags','is_top','rank','status')
             }),
         (u'内容', {
             'fields': ('content',)
@@ -21,5 +21,12 @@ class ArticleAdmin(admin.ModelAdmin):
             }),
     )
 
+class CategoryAdmin(admin.ModelAdmin):
+    search_fields =('name',)
+    list_filter = ('status','create_time')
+    list_display = ('name','parent','rank','status')
+    fields = ('name','parent','rank','status')
+
 
 admin.site.register(Article,ArticleAdmin)
+admin.site.register(Category,CategoryAdmin)

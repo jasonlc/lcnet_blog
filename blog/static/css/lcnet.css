@@ -10,7 +10,17 @@ body{
 header {
     font-size:14px;
 }
-
+a{
+    color:#3c3c3c;
+}
+a:focus{
+    color:#7f007f;
+    text-decoration: none;
+}
+a:hover{
+    color: #7f0055;
+    text-decoration: none;
+}
 /*使footer置于底部*/
 body,html {
     margin: 0;
@@ -30,3 +40,82 @@ body,html {
     padding:10px;
     padding-bottom: 30px;
 }
+footer{
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    background: #ccc;
+}
+/*下滑线*/
+.underline{
+    border-bottom:2px solid #eee;
+}
+
+.label-lcnet-1{
+    background-color:#6ce26c;
+}
+.label-lcnet-2{
+    background-color: #2aabd2;
+}
+.label-lcnet-3{
+    background-color: #2e6da4;
+}
+
+.pre-cat{
+    float: left;
+    margin-right: 15px;
+    position: relative;
+}
+.pre-catinner{
+    background-color: #5ba1cf;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #eee;
+}
+.pre-catarrow{
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    font-size: 0px;
+    line-height: 0;
+    border-width: 4px;
+    border-style: solid;
+    border-image: none;
+    right: -8px;
+    top: 10px;
+    border-color: transparent transparent transparent #5ba1cf;
+}
+/***********************************/
+
+
+/* all post 块内容*/
+.all-post{
+    margin-bottom:20px;
+}
+
+.all-post .post-title {
+    margin-bottom:10px;
+}
+.all-post .post-title h1{
+    margin-top:0px;
+    font-size:20px;
+    height:30px;
+    line-height:30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.all-post .post-title>.post-tags{
+    float: right;
+}
+.all-post .post-content .thumbnail{
+    border: 1px solid #7f007f;
+    padding: 0px;
+}
+.all-post .post-info{
+    float: right;
+    margin-top: -20px;
+}
+/**************************/

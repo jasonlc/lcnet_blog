@@ -1,9 +1,10 @@
 #encoding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse,Http404
-from blog.models import Article
+from blog.models import Article,Category
 from django.views.generic import View,ListView,DetailView
 from django.core.cache import caches
+from lcnet_blog.settings import PAGE_NUM
 
 try:
     cache=caches['memcache']
@@ -40,3 +41,15 @@ class ArticleView(DetailView):
     #     en_title = self.kwargs.get('slug','')
     #     kwargs['comment_list'] = self.queryset.get(en_title=en_title).comment_set.all()
     #     return super(ArticleView,self).get_context_data(**kwargs)
+
+class CategoryView(ListView):
+    template_name = "blog/category.html"
+    context_object_name = "article_list"
+    paginate_by = PAGE_NUM
+    def get_queryset(self):
+        category=self.kwargs.get('category','')
+        try:
+            article_list=Category.objects.get(name=category).article_set.all()
+        except Category.DoesNotExist:
+            raise Http404
+        return article_list

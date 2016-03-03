@@ -1,0 +1,9 @@
+<ul class="pager">
+    {% if page_obg.has_previous %}
+        <li class="previous">
+            <a href="?page={{page_obj.previous_page_number}}">&larr; 上一页</a>
+        </li>
+    {% else %}
+         <li class="previous"></li>
+    {% endif %}
+</ul>
