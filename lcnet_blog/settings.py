@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'blog',
+    'lcnet_auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -109,7 +110,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #设置user model
-# AUTH_USER_MODEL = "vmaig_auth.lcnetUser"
+AUTH_USER_MODEL = "lcnet_auth.LcnetUser"
 
 #cache配置#########################################
 CACHES = {

@@ -41,7 +41,7 @@ class Category(models.Model):
             return '%s'%(self.name)
 
 class Article(models.Model):
-    # author=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name=u'作者')
+    author=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name=u'作者')
     category=models.ForeignKey(Category,verbose_name=u'分类')
     title=models.CharField(max_length=100,verbose_name=u'标题')
     en_title=models.CharField(max_length=100,verbose_name=u'英文标题')

@@ -4,11 +4,11 @@ from blog.models import Article,Category
 
 class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title','summary')
-    list_filter = ('status','category','create_time','update_time','is_top')
-    list_display = ('title','category','status','is_top','update_time')
+    list_filter = ('status','category','is_top','create_time','update_time','is_top')
+    list_display = ('title','category','author','status','is_top','update_time')
     fieldsets = (
         (u'基本信息', {
-            'fields': ('title','category','en_title','img','tags','is_top','rank','status')
+            'fields': ('title','en_title','img','category','tags','author','is_top','rank','status')
             }),
         (u'内容', {
             'fields': ('content',)
