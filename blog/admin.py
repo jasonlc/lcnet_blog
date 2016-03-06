@@ -1,6 +1,6 @@
 #encoding:utf-8
 from django.contrib import admin
-from blog.models import Article,Category
+from blog.models import Article,Category,Nav
 
 class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title','summary')
@@ -27,6 +27,13 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name','parent','rank','status')
     fields = ('name','parent','rank','status')
 
+class NavAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
+    list_display = ('name','url','status','create_time')
+    list_filter = ('status','create_time')
+    fields = ('name','url','status')
+
 
 admin.site.register(Article,ArticleAdmin)
 admin.site.register(Category,CategoryAdmin)
+admin.site.register(Nav,NavAdmin)

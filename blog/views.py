@@ -1,17 +1,28 @@
 #encoding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse,Http404
-from blog.models import Article,Category
+from blog.models import Article,Category,Nav
 from django.views.generic import View,ListView,DetailView
 from django.core.cache import caches
 from lcnet_blog.settings import PAGE_NUM
+import logging
 
 try:
     cache=caches['memcache']
 except ImportError as e:
     cache=caches['default']
+logger=logging.getLogger(__name__)
 
-class ArticleView(DetailView):
+class BaseMixin(object):
+    def get_context_data(self,*args,**kwargs):
+        context=super(BaseMixin,self).get_context_data(*args)
+        try:
+            context["nav_list"]=Nav.objects.filter(status=0)
+        except Exception as e:
+            logger.error(u'加载基础信息出错')
+        return context
+
+class ArticleView(BaseMixin,DetailView):
     queryset=Article.objects.filter(status=0)
     template_name = 'blog/article.html'
     context_object_name = 'article'

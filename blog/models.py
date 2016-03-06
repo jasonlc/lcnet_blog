@@ -21,6 +21,21 @@ STATUS={
     2:'删除',
 }
 
+class Nav(models.Model):
+    name=models.CharField(max_length=40,verbose_name=u'导航条内容')
+    url=models.CharField(max_length=200,blank=True,null=True,verbose_name=u'指向地址')
+
+    status=models.IntegerField(default=0,choices=STATUS.items(),verbose_name=u'状态')
+    create_time=models.DateTimeField(u'创建时间',auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural=verbose_name=u'导航条'
+        ordering=['-create_time']
+        app_label=string_with_title('blog',u'博客管理')
+
+    def __unicode__(self):
+        return self.name
+
 class Category(models.Model):
     name=models.CharField(max_length=40,verbose_name=u'名称')
     parent=models.ForeignKey('self',default=None,blank=True,null=True,verbose_name=u'上级分类')
