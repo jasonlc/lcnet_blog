@@ -119,3 +119,28 @@ footer{
     margin-top: -20px;
 }
 /**************************/
+
+/*nav中 login弹出窗口中的样式*/
+#login-button {
+    float:right;
+}
+
+#forgetpassword {
+    float:right;
+}
+
+#forgetpassword a {
+    color:red;
+    font-size:14px;
+    line-height:30px;
+}
+
+#register-modal .alert{
+   margin:15px;
+   padding:10px;
+}
+
+#login-modal .alert{
+   margin:15px;
+   padding:10px;
+}
