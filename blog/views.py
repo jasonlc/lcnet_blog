@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,Http404
 from blog.models import Article,Category,Nav
-from django.views.generic import View,ListView,DetailView
+from django.views.generic import View,ListView,DetailView,TemplateView
 from django.core.cache import caches
 from lcnet_blog.settings import PAGE_NUM
 import logging
@@ -64,3 +64,27 @@ class CategoryView(ListView):
         except Category.DoesNotExist:
             raise Http404
         return article_list
+
+
+class UserView(BaseMixin,TemplateView):
+    template_name = "blog/user.html"
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            logger.error(u"[UserView]用户未登陆")
+            return render(request,'blog/login.html')
+
+        slug=self.kwargs.get("slug")
+
+        if slug=="changetx":
+            self.template_name="blog/user_changetx.html"
+            return super(UserView,self).get(request,*args,**kwargs)
+        elif slug=="changepassword":
+            self.template_name="blog/user_changepassword.html"
+            return super(UserView,self).get(request,*args,**kwargs)
+        elif slug == 'changeinfo':
+            self.template_name = 'blog/user_changeinfo.html'
+            return super(UserView,self).get(request,*args,**kwargs)
+
+        logger.error(u'[UserView]不存在此接口')
+        raise Http404

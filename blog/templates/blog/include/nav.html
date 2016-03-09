@@ -159,8 +159,6 @@
                         </div>
                     </div>
 
-
-
                     <button id="register-button" type="submit" class="btn btn-primary pull-right">
                         注册
                     </button>
@@ -171,10 +169,56 @@
 </div>
 
 <script language="javascript" type="text/javascript">
-{#    $("#login-button").click(function(){#}
-{#        $("#login-modal .alert").remove();#}
-{#    });#}
-{#     $("#register-button").click(function(){#}
-{#        $("#register-modal .alert").remove();#}
-{#    });#}
+    $("#login-button").click(function(){
+        $("#login-modal .alert").remove();
+    });
+     $("#register-button").click(function(){
+        $("#register-modal .alert").remove();
+    });
+
+    $("#login-form").submit(function(){
+        $.ajax({
+            type:"POST",
+            url:"/usercontrol/login",
+            data:{"username":$("#login-username").val(),"password":$("#login-password").val()},
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+            },
+            success:function(data,textStatus){
+                var errors=data["errors"];
+                if(errors.length==0){
+                    location.reload();
+                }
+                else{
+                    var html="<div class=\"alert alert-danger\">"
+                    for(var key in errors){
+                        html+=errors[key]+"<br/>";
+                    }
+                    html+="</div>";
+                    $("#login-modal .modal-header").after(html);
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.responseText);
+            }
+        });
+        return false;
+    });
+
+    $("#logout").click(function(){
+        $.ajax({
+            type:"POST",
+            url:"/usercontrol/logout",
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+            },
+            success:function(data,textStatus){
+                location.reload();
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.responseText);
+            }
+        });
+        return false;
+    });
 </script>
