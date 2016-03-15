@@ -2,7 +2,7 @@
 from django import forms
 from lcnet_auth.models import LcnetUser
 
-class LcNetUserCreationForm(forms.Form):
+class LcNetUserCreationForm(forms.ModelForm):
     error_messages={
         'duplicate_username':u'用户名已存在',
         'password_mismatch':u'两次密码不相等',
@@ -16,15 +16,15 @@ class LcNetUserCreationForm(forms.Form):
         'invalid':u'email格式不正确',
         'required':u'email未填'
     })
-    password=forms.CharField(widget=forms.PasswordInput,error_messages={
+    password1=forms.CharField(widget=forms.PasswordInput,error_messages={
         'required':u'密码未填'
     })
-    confirmpassword=forms.CharField(widget=forms.PasswordInput,error_messages={
+    password2=forms.CharField(widget=forms.PasswordInput,error_messages={
         'required':u'确认密码未填'
     })
     class Meta:
         model=LcnetUser
-        fileds=("username","email")
+        fields = ("username","email")
 
     def clean_username(self):
         username=self.cleaned_data["username"]
@@ -36,8 +36,8 @@ class LcNetUserCreationForm(forms.Form):
             self.error_messages["duplicate_username"])
 
     def clean_confirmpassword(self):
-        password=self.cleaned_data["password"]
-        confirmpassword=self.cleaned_data["confirmpassword"]
+        password=self.cleaned_data["password1"]
+        confirmpassword=self.cleaned_data["password2"]
         if password and confirmpassword and password!=confirmpassword:
             raise forms.validationError(
                 self.error_messages["password_mismatch"]
@@ -55,8 +55,8 @@ class LcNetUserCreationForm(forms.Form):
         )
 
     def save(self,commit=True):
-        user=super(LcNetUserCreationForm,self).save(commit=False)
-        user.set_password(self.cleaned_data["password"])
+        user = super(LcNetUserCreationForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
         return user

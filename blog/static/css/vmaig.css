@@ -274,6 +274,8 @@ footer {
 /****************/
 
 
+
+
 /* home post块内容 */
 .home-post{
     position:relative;
@@ -291,7 +293,7 @@ footer {
     margin-top:0px;
     margin-bottom:0px;
     padding-top:3px;
-    font-size:20px; 
+    font-size:20px;
     height:30px;
     line-height:30px;
     overflow: hidden;
@@ -338,8 +340,6 @@ footer {
 }
 
 /***********************************/
-
-
 /* all post 块内容*/
 .all-post{
     margin-bottom:20px;

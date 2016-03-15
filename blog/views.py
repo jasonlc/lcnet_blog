@@ -17,10 +17,25 @@ class BaseMixin(object):
     def get_context_data(self,*args,**kwargs):
         context=super(BaseMixin,self).get_context_data(*args)
         try:
+            context["hot_article_list"]=Article.objects.order_by("-view_times")[0:10]
             context["nav_list"]=Nav.objects.filter(status=0)
         except Exception as e:
             logger.error(u'加载基础信息出错')
         return context
+
+class IndexView(BaseMixin,ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'article_list'
+    paginate_by = PAGE_NUM #分页--每页的数目
+
+    def get_context_data(self,**kwargs):
+        #轮播
+        # kwargs['carousel_page_list'] = Carousel.objects.all()
+        return super(IndexView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        article_list = Article.objects.filter(status=0)
+        return article_list
 
 class ArticleView(BaseMixin,DetailView):
     queryset=Article.objects.filter(status=0)
