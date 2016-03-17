@@ -86,3 +86,13 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
+class Comment(models.Model):
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name=u'用户')
+    article=models.ForeignKey(Article,verbose_name=u'文章')
+    comment=models.TextField(verbose_name=u'评论')
+    create_time=models.DateTimeField(u'创建时间',auto_now_add=True)
+    class Meta:
+        verbose_name_plural=verbose_name=u'评论'
+        ordering=['-create_time']
+        app_label=string_with_title('blog',u'用户管理')
+

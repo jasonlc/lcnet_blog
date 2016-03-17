@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from blog.views import ArticleView,CategoryView,UserView,IndexView
+from blog.views import ArticleView,CategoryView,UserView,IndexView,CommentView,SearchView
 from django.views.generic import TemplateView
 
 urlpatterns=[
@@ -9,4 +9,6 @@ urlpatterns=[
     url(r'^user/(?P<slug>\w+)/$',UserView.as_view()),
     url(r'^login/$',TemplateView.as_view(template_name="blog/login.html")),
     url(r'^register/$',TemplateView.as_view(template_name="blog/register.html")),
+    url(r'^comment/(?P<slug>\w+)$',CommentView.as_view()),
+    url(r'^search/$',SearchView.as_view()),
 ]

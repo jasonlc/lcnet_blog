@@ -5,7 +5,6 @@ body{
     font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
     color: #0d3349;
     font-size: 12px;
-    background: url('../img/bg.jpg') repeat scroll 0% 0% transparent;
 }
 header {
     font-size:14px;
@@ -43,9 +42,12 @@ body,html {
 footer{
     position: absolute;
     bottom: 0;
-    height: 80px;
+    height: 60px;
     width: 100%;
-    background: #ccc;
+    /*background: #ccc;*/
+    padding: 40px 0;
+    color: #fff;
+    text-align: center;
 }
 /*下滑线*/
 .underline{
@@ -268,4 +270,92 @@ footer{
 .panel-lcnet span.btn{
     padding:0px;
     margin-right:5px;
+}
+
+/*按钮样式*/
+.btn-vmaig-comments{
+    color: #FFF;
+    background-color: #D9534F;
+    border-color: #D43F3A;
+}
+
+/*panel 样式*/
+.panel-lcnet-comments{
+    box-shadow: 0px 0px 5px #C2C2C2;
+    border-color:#EEE;
+}
+
+.panel-lcnet-comments .panel-heading{
+    color: #EEE;
+    background-color: #222;
+    border-color: #EEE;
+}
+
+.panel-lcnet-comments .input-group-addon{
+    color: #EEE;
+    background-color: #3D4450;
+    border:2px solid #3D4450;
+}
+
+.panel-lcnet-comments .badge{
+    background-color:#D94600;
+}
+
+.panel-lcnet-comments span.btn{
+    padding:0px;
+    margin-right:5px;
+}
+
+/*评论框****************/
+.lcnet-comment ul{
+    padding-left:0px;
+}
+.lcnet-comment ul li{
+    list-style-type:none;
+    border-top:1px dotted #ddd;
+    padding:10px;
+}
+
+.lcnet-comment-tx {
+    float:left;
+}
+
+.lcnet-comment-content{
+    padding-left:50px;
+    word-break: break-all;
+}
+
+.lcnet-comment-content h1{
+    margin:0px;
+    font-size:15px;
+    padding-bottom:10px;
+}
+
+.lcnet-comment-edit {
+    padding-left:50px;
+    margin-bottom:20px;
+}
+
+.lcnet-comment-edit textarea{
+    width:100%;
+    margin-bottom:10px;
+}
+
+
+/*首页右侧的 comment面板样式*/
+.comment-tx {
+    float:left;
+}
+
+.comment-info {
+    padding-left:20%;
+}
+
+.comment-username a{
+    color: #438904;
+    font-size: 14px;
+}
+
+.comment-content {
+    word-break:break-all;
 }

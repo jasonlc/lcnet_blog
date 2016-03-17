@@ -1,10 +1,12 @@
 #encoding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse,Http404
-from blog.models import Article,Category,Nav
+from blog.models import Article,Category,Nav,Comment
 from django.views.generic import View,ListView,DetailView,TemplateView
+from django.db.models import Q
 from django.core.cache import caches
 from lcnet_blog.settings import PAGE_NUM
+from django.core.exceptions import PermissionDenied
 import logging
 
 try:
@@ -12,13 +14,14 @@ try:
 except ImportError as e:
     cache=caches['default']
 logger=logging.getLogger(__name__)
-
+ArticleModel = Article
 class BaseMixin(object):
     def get_context_data(self,*args,**kwargs):
-        context=super(BaseMixin,self).get_context_data(*args)
+        context=super(BaseMixin,self).get_context_data(**kwargs)
         try:
             context["hot_article_list"]=Article.objects.order_by("-view_times")[0:10]
             context["nav_list"]=Nav.objects.filter(status=0)
+            context["latest_comment_list"]=Comment.objects.order_by("-create_time")[0:10]
         except Exception as e:
             logger.error(u'加载基础信息出错')
         return context
@@ -62,11 +65,11 @@ class ArticleView(BaseMixin,DetailView):
         cache.set(en_title,visited_ips,15*60)
         return super(ArticleView,self).get(request,*args,**kwargs)
 
-    # def get_context_data(self, **kwargs):
-    #     #评论
-    #     en_title = self.kwargs.get('slug','')
-    #     kwargs['comment_list'] = self.queryset.get(en_title=en_title).comment_set.all()
-    #     return super(ArticleView,self).get_context_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        #评论
+        en_title = self.kwargs.get('slug','')
+        kwargs['comment_list'] = self.queryset.get(en_title=en_title).comment_set.all()
+        return super(ArticleView,self).get_context_data(**kwargs)
 
 class CategoryView(ListView):
     template_name = "blog/category.html"
@@ -103,3 +106,59 @@ class UserView(BaseMixin,TemplateView):
 
         logger.error(u'[UserView]不存在此接口')
         raise Http404
+
+class CommentView(View):
+    def post(self,request,*args,**kwargs):
+        user=self.request.user
+        comment=self.request.POST.get("comment","")
+        if not user.is_authenticated():
+            logger.error(u'[CommentView]当前用户为非活动用户:[%s]'%user.username)
+            return HttpResponse(u'请先登陆！',status=403)
+        if not comment:
+            logger.error(u'[CommentView]当前用户输入空评论:[%s]' % user.username)
+            return HttpResponse(u"请输入评论内容！",status=403)
+        en_title=self.kwargs.get('slug','')
+        try:
+            article=ArticleModel.objects.get(en_title=en_title)
+        except ArticleModel.DoesNotExist:
+            logger.error(u'[CommentView]此文章不存在:[%s]' % en_title)
+            raise PermissionDenied
+        comment=Comment.objects.create(user=user,
+                article=article,
+                comment=comment,
+                )
+        try:
+            img = comment.user.img
+        except Exception as e:
+            img = "http://vmaig.qiniudn.com/image/tx/tx-default.jpg"
+
+        #返回当前评论
+        html = "<li>\
+                    <div class=\"lcnet-comment-tx\">\
+                        <img src="+img+" width=\"40\"></img>\
+                    </div>\
+                    <div class=\"lcnet-comment-content\">\
+                        <a><h1>"+comment.user.username+"</h1></a>"\
+                        +u"<p>评论："+comment.comment+"</p>"+\
+                        "<p>"+comment.create_time.strftime("%Y-%m-%d %H:%I:%S")+"</p>\
+                    </div>\
+                </li>"
+
+        return HttpResponse(html)
+
+class SearchView(BaseMixin,ListView):
+    template_name = "blog/search.html"
+    context_object_name = "article_list"
+    paginate_by = PAGE_NUM
+
+    def get_context_data(self,*args,**kwargs):
+        kwargs['s']=self.request.GET.get('s','')
+        return super(SearchView,self).get_context_data(**kwargs)
+    def get_queryset(self):
+        #获取搜索的关键字
+        s = self.request.GET.get('s','')
+        #在文章的标题,summary和tags中搜索关键字
+        article_list = Article.objects.only('title','summary','tags')\
+                .filter(Q(title__icontains=s)|Q(summary__icontains=s)|Q(tags__icontains=s)\
+                ,status=0);
+        return article_list
