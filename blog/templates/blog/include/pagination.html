@@ -1,23 +1,49 @@
-<ul class="pager">
-    {% if  page_obj.has_previous %}
-        <li class="previous">
-            <a href="?page={{page_obj.previous_page_number}}">&larr; 上一页</a>
-        </li>
+{#<ul class="pager">#}
+{#    {% if  page_obj.has_previous %}#}
+{#        <li class="previous">#}
+{#            <a href="?page={{page_obj.previous_page_number}}">&larr; 上一页</a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li class="previous disabled">#}
+{#            <a>&larr; 上一页</a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{##}
+{#    <li class="page-number">{{page_obj.number}}/{{paginator.num_pages}}</li>#}
+{##}
+{#    {% if  page_obj.has_next%}#}
+{#        <li class="next">#}
+{#            <a href="?page={{page_obj.next_page_number}}">下一页 &rarr;</a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li class="next disabled">#}
+{#            <a>下一页 &rarr;</a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#</ul>#}
+<nav>
+   <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}{{ hashtag }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
     {% else %}
-        <li class="previous disabled">
-            <a>&larr; 上一页</a>
-        </li>
+         <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
     {% endif %}
-
-    <li class="page-number">{{page_obj.number}}/{{paginator.num_pages}}</li>
-
-    {% if  page_obj.has_next%}
-        <li class="next">
-            <a href="?page={{page_obj.next_page_number}}">下一页 &rarr;</a>
-        </li>
+    {% for page in page_obj.paginator.page_range %}
+        {% if page %}
+            {% ifequal page page_obj.number %}
+                <li class="active"><a href="#">{{ page }} <span class="sr-only">(current)</span></a></li>
+            {% else %}
+                <li><a href="?page={{ page }}{{ getvars }}{{ hashtag }}">{{ page }} </a></li>
+            {% endifequal %}
+          {% else %}
+            <li><a href="#">...</a></li>
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
     {% else %}
-        <li class="next disabled">
-            <a>下一页 &rarr;</a>
-        </li>
+            <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+    </li>
     {% endif %}
 </ul>
+</nav>

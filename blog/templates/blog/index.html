@@ -1,23 +1,20 @@
 {% extends "blog/base.html" %}
-{% block main %}
-    <div class="row">
-        <div id="lcnet-content" class="col-md-8 col-lg-9">
-            <div class="home-post-list">
-                {% if article_list %}
-                    {% with article_list as post_list %}
-                        {% for post in post_list %}
-                            {% include "blog/include/home_post.html" %}
-                        {% endfor %}
-                    {% endwith %}
-                {% endif %}
-            {% if page_obj %}
-                {% include "blog/include/pagination.html" %}
-            {% endif %}
-            </div>
-        </div>
-        <div id="lcnet-side" class="col-md-4 col-lg-3 hidden-xs">
-            {% include "blog/widgets/host_article.html" %}
-            {% include "blog/comments/latest_comments.html" %}
-        </div>
+{% block content %}
+    <div class="home-post-list">
+        {% if article_list %}
+            {% with article_list as post_list %}
+                {% for post in post_list %}
+                    {% include "blog/include/home_post.html" %}
+                {% endfor %}
+            {% endwith %}
+        {% endif %}
+        {% if page_obj %}
+            {% include "blog/include/pagination.html" %}
+        {% endif %}
     </div>
+{% endblock %}
+{% block rightbar %}
+    {% include "blog/widgets/category_article.html" %}
+    {% include "blog/widgets/host_article.html" %}
+    {% include "blog/comments/latest_comments.html" %}
 {% endblock %}

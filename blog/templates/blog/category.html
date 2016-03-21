@@ -1,19 +1,18 @@
 {% extends 'blog/base.html' %}
-{% block main %}
-<div class="row">
-    <div id="lcnet-content" class="col-md-8 col-lg-9">
-        <div id="all-post-list" class="well">
-            {% if article_list %}
-                {% with post_list=article_list %}
-                    {% for post in post_list %}
-                        {% include "blog/include/category_post.html" %}
-                    {% endfor %}
-                {% endwith %}
-            {% endif %}
-        </div>
-    </div>
+{% block content %}
+    {% if article_list %}
+        {% with post_list=article_list %}
+            {% for post in post_list %}
+                {% include "blog/include/category_post.html" %}
+            {% endfor %}
+        {% endwith %}
+    {% endif %}
     {% if page_obj %}
         {% include "blog/include/pagination.html" %}
     {% endif %}
-</div>
+{% endblock %}
+{% block rightbar %}
+    {% include "blog/widgets/category_article.html" %}
+    {% include "blog/widgets/host_article.html" %}
+    {% include "blog/comments/latest_comments.html" %}
 {% endblock %}

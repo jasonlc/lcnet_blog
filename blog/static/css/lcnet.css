@@ -9,6 +9,7 @@ body{
 header {
     font-size:14px;
 }
+
 a{
     color:#3c3c3c;
 }
@@ -44,9 +45,9 @@ footer{
     bottom: 0;
     height: 60px;
     width: 100%;
-    /*background: #ccc;*/
+    background: #ccc;
     padding: 40px 0;
-    color: #fff;
+    color: #000000;
     text-align: center;
 }
 /*下滑线*/
@@ -253,7 +254,7 @@ footer{
 
 .panel-lcnet .panel-heading{
     color: #EEE;
-    background-color: #222;
+    background-color: #2fa4e7;
     border-color: #EEE;
 }
 
@@ -287,7 +288,7 @@ footer{
 
 .panel-lcnet-comments .panel-heading{
     color: #EEE;
-    background-color: #222;
+    background-color: #2fa4e7;
     border-color: #EEE;
 }
 

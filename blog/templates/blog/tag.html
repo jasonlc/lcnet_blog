@@ -2,17 +2,17 @@
 {% block content %}
     <div id="all-post-list" class="well">
         {% if article_list %}
-        {% with post_list=article_list %}
-        {% for post in post_list %}
-            {% include "./blog/include/search_post.html"%}
-        {% endfor %}
-        {% endwith %}
+            {% with post_list=article_list %}
+                {% for post in post_list %}
+                    {% include "blog/include/tag_post.html" %}
+                {% endfor %}
+            {% endwith %}
         {% endif %}
     </div>
-    <!--分页 -->
-     {% if page_obj %}
-            {% include "blog/include/pagination.html" %}
-     {% endif %}
+     <!--分页 -->
+    {% if page_obj%}
+    {% include "./blog/include/pagination.html"%}
+    {% endif %}
 {% endblock %}
 {% block rightbar %}
     {% include "blog/widgets/category_article.html" %}

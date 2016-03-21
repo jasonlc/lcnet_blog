@@ -1,43 +1,40 @@
 {% extends 'blog/base.html' %}
-{% block main %}
-<div class="row">
-    <div id="lcnet-content" class="col-md-8 col-lg-9">
-        <div id="article-page" class="well">
-            <ol class="breadcrumb">
-                <li><a href="/"><span class="glyphicon glyphicon-home"></span></a> </li>
-                <li><a href="/category/{{ article.category }}/">{{ article.category }}</a></li>
-                <li class="hidden-xs"><a><span class="glyphicon glyphicon-calendar"></span>
-                    {{ article.pub_time|date:"Y-m-d" }}</a></li>
-                <li><a><span class="glyphicon glyphicon-eye-open"></span>
-                    {{ article.view_times }}</a></li>
-                <li class="pull-right">
-                    <a><span class="glyphicon glyphicon-user"></span>{{ article.author }}</a>
-                </li>
-            </ol>
-            <div id="article">
-                <div class="article-title">
-                    <h1>{{ article.title }}</h1>
-                </div>
-                <div class="article-tags">
-                    {% for tag in article.get_tags %}
-                        <a href="/tags/{{ tag }}">
-                            <span class="label label-lcnet-{{forloop.counter}} btn">{{tag}}</span>
-                        </a>
-                    {% endfor %}
-                </div>
-                <hr/>
-                <div class="article-content">
-                    {% autoescape off %}
-                        {{ article.content }}
-                    {% endautoescape %}
-                </div>
-            </div>
+{% block content %}
+<div id="article-page" class="well">
+    <ol class="breadcrumb">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a> </li>
+        <li><a href="/category/{{ article.category }}/">{{ article.category }}</a></li>
+        <li class="hidden-xs"><a><span class="glyphicon glyphicon-calendar"></span>
+            {{ article.pub_time|date:"Y-m-d" }}</a></li>
+        <li><a><span class="glyphicon glyphicon-eye-open"></span>
+            {{ article.view_times }}</a></li>
+        <li class="pull-right">
+            <a><span class="glyphicon glyphicon-user"></span>{{ article.author }}</a>
+        </li>
+    </ol>
+    <div id="article">
+        <div class="article-title">
+            <h1>{{ article.title }}</h1>
         </div>
-        {% include "blog/comments/comments.html" %}
-    </div>
-    <div id="lcnet-side" class="col-md-4 col-lg-3 hidden-xs">
-        {% include "blog/widgets/host_article.html" %}
-        {% include "blog/comments/latest_comments.html" %}
+        <div class="article-tags">
+            {% for tag in article.get_tags %}
+                <a href="/tags/{{ tag }}">
+                    <span class="label label-lcnet-{{forloop.counter}} btn">{{tag}}</span>
+                </a>
+            {% endfor %}
+        </div>
+        <hr/>
+        <div class="article-content">
+            {% autoescape off %}
+                {{ article.content }}
+            {% endautoescape %}
+        </div>
     </div>
 </div>
+{% include "blog/comments/comments.html" %}
+{% endblock %}
+{% block rightbar %}
+     {% include "blog/widgets/category_article.html" %}
+    {% include "blog/widgets/host_article.html" %}
+    {% include "blog/comments/latest_comments.html" %}
 {% endblock %}

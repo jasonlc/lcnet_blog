@@ -8,6 +8,7 @@ from django.core.cache import caches
 from lcnet_blog.settings import PAGE_NUM
 from django.core.exceptions import PermissionDenied
 import logging
+from django.db.models import Count
 
 try:
     cache=caches['memcache']
@@ -18,6 +19,19 @@ ArticleModel = Article
 class BaseMixin(object):
     def get_context_data(self,*args,**kwargs):
         context=super(BaseMixin,self).get_context_data(**kwargs)
+        try:
+            context["categories"]=Category.objects.annotate(num_article=Count('article'))
+            context["hot_article_list"]=Article.objects.order_by("-view_times")[0:10]
+            context["nav_list"]=Nav.objects.filter(status=0)
+            context["latest_comment_list"]=Comment.objects.order_by("-create_time")[0:10]
+        except Exception as e:
+            logger.error(u'加载基础信息出错')
+        return context
+
+class AboutView(TemplateView):
+    template_name = "blog/about.html"
+    def get_context_data(self,*args,**kwargs):
+        context=super(AboutView,self).get_context_data(**kwargs)
         try:
             context["hot_article_list"]=Article.objects.order_by("-view_times")[0:10]
             context["nav_list"]=Nav.objects.filter(status=0)
@@ -38,6 +52,15 @@ class IndexView(BaseMixin,ListView):
 
     def get_queryset(self):
         article_list = Article.objects.filter(status=0)
+        return article_list
+
+class TagView(BaseMixin,ListView):
+    template_name = "blog/tag.html"
+    context_object_name = "article_list"
+    paginate_by = PAGE_NUM
+    def get_queryset(self):
+        tag=self.kwargs.get("tag","")
+        article_list=Article.objects.only("tags").filter(tags__icontains=tag,status=0)
         return article_list
 
 class ArticleView(BaseMixin,DetailView):
@@ -71,7 +94,7 @@ class ArticleView(BaseMixin,DetailView):
         kwargs['comment_list'] = self.queryset.get(en_title=en_title).comment_set.all()
         return super(ArticleView,self).get_context_data(**kwargs)
 
-class CategoryView(ListView):
+class CategoryView(BaseMixin,ListView):
     template_name = "blog/category.html"
     context_object_name = "article_list"
     paginate_by = PAGE_NUM
@@ -145,6 +168,7 @@ class CommentView(View):
                 </li>"
 
         return HttpResponse(html)
+
 
 class SearchView(BaseMixin,ListView):
     template_name = "blog/search.html"

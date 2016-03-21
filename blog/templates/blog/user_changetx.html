@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 
-{% block main%}
+{% block content%}
 
 <div class="row" style="margin-top: 20px">
     <div class="col-md-2">
@@ -32,3 +32,8 @@
 </div>
 
 {% endblock%}
+{% block rightbar %}
+    {% include "blog/widgets/category_article.html" %}
+    {% include "blog/widgets/host_article.html" %}
+    {% include "blog/comments/latest_comments.html" %}
+{% endblock %}
