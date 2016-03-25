@@ -1,3 +1,4 @@
+{% load custom_markdown %}
 <div class="all-post clearfix underline">
     <div class="post-title clearfix">
         <a href="/category/{{ post.category }}/">
@@ -23,19 +24,11 @@
     </div>
     <div class="post-content">
         <div class="row">
-            <div class="col-sm-4">
-                <figure class="thumbnail">
-                    <a href="/article/{{ post.en_title }}.html/"><img src="{{ post.img }}" height="400" alt=""></a>
-                </figure>
-            </div>
-            <div class="col-sm-8">
+            <div class="col-sm-10">
                 <p>
-                    {% autoescape off%}
-                        {{ post.summary|slice:"200" }}
-                    {% endautoescape %}
-                    {% if post.summary|length > 200 %}
-                        ...
-                    {% endif %}
+                {% autoescape off%}
+                    {{ post.content|custom_markdown|truncatewords_html:100 }}
+                {% endautoescape %}
                 </p>
             </div>
         </div>

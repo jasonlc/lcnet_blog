@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import Http404,HttpResponse
-from django.core.mail import send_mail
+from django.core.mail import send_mail,EmailMessage
 from django.contrib.auth.forms import PasswordChangeForm,SetPasswordForm
 from django.contrib import auth
 from django.contrib.sites.models import get_current_site
@@ -14,9 +14,13 @@ import base64
 import logging
 from django.core.exceptions import PermissionDenied
 from lcnet_auth.forms import LcNetUserCreationForm
+# from lcnet_blog.settings import EMAIL_HOST_USER
+logger=logging.getLogger('project.interesting.stuff')
 
-logger=logging.getLogger(__name__)
-
+# def send_html_mail(subject,html_content,recipient_list):
+#         msg = EmailMessage(subject, html_content, EMAIL_HOST_USER, recipient_list)
+#         msg.content_subtype = "html"
+#         msg.send()
 
 class UserControl(View):
     def post(self,request,*args,**kwargs):
@@ -67,9 +71,22 @@ class UserControl(View):
         errors=[]
 
         if form.is_valid():
-            current_site=get_current_site(request)
-            site_name=current_site.name
-            domain=current_site.domain
+            current_site = get_current_site(request)
+            site_name = current_site.name
+            domain = current_site.domain
+            title = u"欢迎来到 %s ！" % site_name
+            message = u"你好！ %s ,感谢注册 %s ！\n\n" % (username,site_name) + \
+                      u"请牢记以下信息：\n" + \
+                      u"用户名：%s" % username+"\n" + \
+                      u"邮箱：%s" % email+"\n" + \
+                      u"网站：http://%s" % domain+"\n\n"
+            # from_email = None
+            # try:
+            #     # send_mail(title, message, from_email, [email])
+            #     send_html_mail(title,message,[email])
+            # except Exception as e:
+            #     logger.error(u'[UserControl]用户注册邮件发送失败:[%s]/[%s],错误信息为：%s' % (username,email,e))
+            #     return HttpResponse(u"发送邮件错误!\n注册失败",status=500)
             new_user = form.save()
             user = auth.authenticate(username=username, password=password2)
             auth.login(request,user)
@@ -80,6 +97,7 @@ class UserControl(View):
                 errors.append(v.as_text())
         mydict = {"errors":errors}
         return HttpResponse(json.dumps(mydict),content_type="application/json")
+
 
     def changepassword(self,request):
         if not request.user.is_authenticated():
@@ -112,9 +130,7 @@ class UserControl(View):
         if not data:
             logger.error(u'[UserControl]用户上传头像为空:[%s]',request.user.username)
             return HttpResponse(u"上传头像错误",status=500)
-
         imgData = base64.b64decode(data)
-
         filename ="tx_100x100_"+'%d' % request.user.id+".jpg"
         filedir = "lcnet_auth/static/tx/"
         if not os.path.exists(filedir):

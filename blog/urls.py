@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from blog.views import ArticleView,CategoryView,UserView,IndexView,CommentView,SearchView,AboutView,TagView
+from blog.views import ArticleView,CategoryView,UserView,IndexView,CommentView,SearchView,AboutView,TagView,ArchiveView
 from django.views.generic import TemplateView
 
 urlpatterns=[
@@ -14,4 +14,5 @@ urlpatterns=[
     # url(r'^about/$',TemplateView.as_view(template_name="blog/about.html")),
     url(r'^about/$',AboutView.as_view()),
     url(r'^tag/(?P<tag>\w+)/$',TagView.as_view()),
+    url(r'^archives/$',ArchiveView.as_view()),
 ]

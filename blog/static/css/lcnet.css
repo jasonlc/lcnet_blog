@@ -21,6 +21,10 @@ a:hover{
     color: #7f0055;
     text-decoration: none;
 }
+h2 a {
+    color: #2fa4e7;
+    text-decoration: none;
+}
 /*使footer置于底部*/
 body,html {
     margin: 0;

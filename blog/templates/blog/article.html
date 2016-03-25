@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load custom_markdown %}
 {% block content %}
 <div id="article-page" class="well">
     <ol class="breadcrumb">
@@ -18,7 +19,7 @@
         </div>
         <div class="article-tags">
             {% for tag in article.get_tags %}
-                <a href="/tags/{{ tag }}">
+                <a href="/tag/{{ tag }}">
                     <span class="label label-lcnet-{{forloop.counter}} btn">{{tag}}</span>
                 </a>
             {% endfor %}
@@ -26,7 +27,7 @@
         <hr/>
         <div class="article-content">
             {% autoescape off %}
-                {{ article.content }}
+                {{ article.content|custom_markdown }}
             {% endautoescape %}
         </div>
     </div>

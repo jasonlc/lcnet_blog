@@ -25,10 +25,7 @@ SECRET_KEY = 'a1(4!7m5k3s)_g39&i6ax1lb^yq#&7#^p10!u9tr0t9^tya1wt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -41,6 +38,7 @@ INSTALLED_APPS = (
 
     'blog',
     'lcnet_auth',
+    'pagedown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -101,7 +99,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -111,6 +109,70 @@ STATIC_URL = '/static/'
 
 #设置user model
 AUTH_USER_MODEL = "lcnet_auth.LcnetUser"
+
+#log配置###########################################
+LOG_FILE = "./log.txt"
+
+LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': True,
+
+        'filters': {
+            'require_debug_false': {
+                '()': 'django.utils.log.RequireDebugFalse'
+                },
+            },
+        'formatters': {
+            'simple': {
+                'format': '[%(levelname)s] %(module)s : %(message)s'
+                },
+            'verbose': {
+                'format': '[%(asctime)s] [%(levelname)s] %(module)s [%(funcName)s] : %(message)s'
+                }
+            },
+
+        'handlers': {
+            'null': {
+                'level': 'DEBUG',
+                'class': 'django.utils.log.NullHandler',
+                },
+            'console': {
+                'level': 'INFO',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose'
+                },
+            'file': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'formatter': 'verbose',
+                'filename': LOG_FILE,
+                'mode': 'a',
+                },
+            'mail_admins': {
+                'level': 'ERROR',
+                'class': 'django.utils.log.AdminEmailHandler',
+                'filters': ['require_debug_false']
+                }
+            },
+        'loggers': {
+            '': {
+                'handlers': ['file', 'console'],
+                'level': 'INFO',
+                'propagate': True,
+                },
+            'django': {
+                'handlers': ['file', 'console'],
+                'level': 'DEBUG',
+                'propagate': True,
+                },
+            'django.request': {
+                'handlers': ['mail_admins', 'console'],
+                'level': 'ERROR',
+                'propagate': True,
+                },
+            }
+        }
+
 
 #cache配置#########################################
 CACHES = {
@@ -134,6 +196,16 @@ CACHES = {
 #分页配置#######################################
 PAGE_NUM = 5
 
+#email配置#########################################
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.exmail.qq.com'                       #SMTP地址 例如: smtp.163.com
+EMAIL_PORT = 25                       #SMTP端口 例如: 25
+EMAIL_HOST_USER = ''                  #我自己的邮箱 例如: xxxxxx@163.com
+EMAIL_HOST_PASSWORD = ''              #我的邮箱密码 例如  xxxxxxxxx
+EMAIL_SUBJECT_PREFIX = u'lcnet'       #为邮件Subject-line前缀,默认是'[django]'
+EMAIL_USE_TLS = True                  #与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 #七牛配置#######################################
 qiniu_access_key = ''

@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,Http404
 from blog.models import Article,Category,Nav,Comment
-from django.views.generic import View,ListView,DetailView,TemplateView
+from django.views.generic import View,ListView,DetailView,TemplateView,ArchiveIndexView
 from django.db.models import Q
 from django.core.cache import caches
 from lcnet_blog.settings import PAGE_NUM
@@ -14,7 +14,7 @@ try:
     cache=caches['memcache']
 except ImportError as e:
     cache=caches['default']
-logger=logging.getLogger(__name__)
+logger=logging.getLogger('project.interesting.stuff')
 ArticleModel = Article
 class BaseMixin(object):
     def get_context_data(self,*args,**kwargs):
@@ -33,6 +33,7 @@ class AboutView(TemplateView):
     def get_context_data(self,*args,**kwargs):
         context=super(AboutView,self).get_context_data(**kwargs)
         try:
+            context["categories"]=Category.objects.annotate(num_article=Count('article'))
             context["hot_article_list"]=Article.objects.order_by("-view_times")[0:10]
             context["nav_list"]=Nav.objects.filter(status=0)
             context["latest_comment_list"]=Comment.objects.order_by("-create_time")[0:10]
@@ -44,7 +45,7 @@ class IndexView(BaseMixin,ListView):
     template_name = 'blog/index.html'
     context_object_name = 'article_list'
     paginate_by = PAGE_NUM #分页--每页的数目
-
+    logger.info("u'开始访问")
     def get_context_data(self,**kwargs):
         #轮播
         # kwargs['carousel_page_list'] = Carousel.objects.all()
@@ -182,7 +183,20 @@ class SearchView(BaseMixin,ListView):
         #获取搜索的关键字
         s = self.request.GET.get('s','')
         #在文章的标题,summary和tags中搜索关键字
-        article_list = Article.objects.only('title','summary','tags')\
-                .filter(Q(title__icontains=s)|Q(summary__icontains=s)|Q(tags__icontains=s)\
+        article_list = Article.objects.only('title','tags')\
+                .filter(Q(title__icontains=s)|Q(tags__icontains=s)\
                 ,status=0);
         return article_list
+
+class ArchiveView(BaseMixin,ArchiveIndexView):
+    models=Article
+    date_field = "create_time"
+    template_name = "blog/archives.html"
+    context_object_name = "archives"
+
+    def get_queryset(self):
+        archives = Article.objects.filter(status=0)
+        return archives
+
+    def __unicode__(self):
+        return u"归档"

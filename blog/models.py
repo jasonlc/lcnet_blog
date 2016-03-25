@@ -60,9 +60,7 @@ class Article(models.Model):
     category=models.ForeignKey(Category,verbose_name=u'分类')
     title=models.CharField(max_length=100,verbose_name=u'标题')
     en_title=models.CharField(max_length=100,verbose_name=u'英文标题')
-    img=models.CharField(max_length=200,default='/static/img/article/default.jpg',verbose_name=u'图片')
     tags=models.CharField(max_length=200,null=True,blank=True,verbose_name=u'标签',help_text=u'用逗号分隔开')
-    summary=models.TextField(verbose_name=u'摘要')
     content=models.TextField(verbose_name=u'正文')
     view_times=models.IntegerField(default=0)
     zan_times=models.IntegerField(default=0)
@@ -74,6 +72,7 @@ class Article(models.Model):
     pub_time=models.DateTimeField(default=False,verbose_name=u'发布时间')
     create_time=models.DateTimeField(verbose_name=u'创建时间',auto_now_add=True)
     update_time=models.DateTimeField(verbose_name=u'更新时间',auto_now=True)
+
 
     def get_tags(self):
         return self.tags.split(',')
