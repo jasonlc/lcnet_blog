@@ -20,7 +20,7 @@ class BaseMixin(object):
     def get_context_data(self,*args,**kwargs):
         context=super(BaseMixin,self).get_context_data(**kwargs)
         try:
-            context["categories"]=Category.objects.annotate(num_article=Count('article'))
+            # context["categories"]=Category.objects.filter(article__status=0).annotate(num_article=Count('article'))
             context["hot_article_list"]=Article.objects.order_by("-view_times")[0:10]
             context["nav_list"]=Nav.objects.filter(status=0)
             context["latest_comment_list"]=Comment.objects.order_by("-create_time")[0:10]
@@ -190,7 +190,7 @@ class SearchView(BaseMixin,ListView):
 
 class ArchiveView(BaseMixin,ArchiveIndexView):
     models=Article
-    date_field = "create_time"
+    date_field = "pub_time"
     template_name = "blog/archives.html"
     context_object_name = "archives"
 

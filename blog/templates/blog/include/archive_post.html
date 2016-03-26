@@ -1,6 +1,6 @@
 <h2><a href="/article/{{ article.en_title }}.html">{{ article.title }}</a></h2>
 <p><span class="glyphicon glyphicon-time"></span>
-    Posted on {{ article.create_time | date:"Y M d" }}
+    Posted on {{ article.pub_time | date:"Y M d" }}
     <span class="glyphicon glyphicon-user"></span>
     Created by <span class="label label-primary">{{ article.author }}</span>
     <span class="glyphicon glyphicon-folder-close"></span>

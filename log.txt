@@ -4135,3 +4135,829 @@ FieldError: Unknown field(s) (img) specified for Article. Check fields/fieldsets
 [2016-03-25 15:09:44,226] [INFO] views [IndexView] : u'开始访问
 [2016-03-25 15:14:13,358] [INFO] views [IndexView] : u'开始访问
 [2016-03-25 15:14:46,280] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 16:29:54,055] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 16:41:37,288] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1516, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1467, in changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1078, in save_model
+    obj.save()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 710, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 738, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 822, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 861, in _do_insert
+    using=using, raw=raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1364, "Field 'img' doesn't have a default value")
+[2016-03-25 16:41:37,288] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1516, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1467, in changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1078, in save_model
+    obj.save()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 710, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 738, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 822, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 861, in _do_insert
+    using=using, raw=raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1364, "Field 'img' doesn't have a default value")
+[2016-03-25 16:42:22,900] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1516, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1467, in changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1078, in save_model
+    obj.save()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 710, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 738, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 822, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 861, in _do_insert
+    using=using, raw=raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1364, "Field 'img' doesn't have a default value")
+[2016-03-25 16:42:22,900] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1516, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1467, in changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1078, in save_model
+    obj.save()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 710, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 738, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 822, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 861, in _do_insert
+    using=using, raw=raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1364, "Field 'img' doesn't have a default value")
+[2016-03-25 16:43:42,322] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 16:43:42,362] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1516, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1467, in changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1078, in save_model
+    obj.save()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 710, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 738, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 822, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 861, in _do_insert
+    using=using, raw=raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1364, "Field 'img' doesn't have a default value")
+[2016-03-25 16:43:42,362] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1516, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 145, in inner
+    return func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1467, in changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1078, in save_model
+    obj.save()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 710, in save
+    force_update=force_update, update_fields=update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 738, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 822, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\base.py", line 861, in _do_insert
+    using=using, raw=raw)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 920, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 974, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1364, "Field 'img' doesn't have a default value")
+[2016-03-25 16:59:41,822] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 17:04:20,463] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 17:17:18,265] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 17:17:18,289] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 208, in render
+    with context.bind_template(self):
+  File "c:\python27\Lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\context.py", line 237, in bind_template
+    processors = (template.engine.template_context_processors +
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\functional.py", line 60, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\engine.py", line 90, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\engine.py", line 90, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\module_loading.py", line 26, in import_string
+    module = import_module(module_path)
+  File "c:\python27\Lib\importlib\__init__.py", line 37, in import_module
+    __import__(name)
+ImportError: No module named article.custom_processors
+[2016-03-25 17:17:18,289] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 208, in render
+    with context.bind_template(self):
+  File "c:\python27\Lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\context.py", line 237, in bind_template
+    processors = (template.engine.template_context_processors +
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\functional.py", line 60, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\engine.py", line 90, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\engine.py", line 90, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\module_loading.py", line 26, in import_string
+    module = import_module(module_path)
+  File "c:\python27\Lib\importlib\__init__.py", line 37, in import_module
+    __import__(name)
+ImportError: No module named article.custom_processors
+[2016-03-25 17:19:03,107] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 17:19:03,168] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 208, in render
+    with context.bind_template(self):
+  File "c:\python27\Lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\context.py", line 241, in bind_template
+    updates.update(processor(self.request))
+  File "E:\mygit\blog\lcnet_blog\blog\custom_processors.py", line 8, in category
+    category = Category.objects.filter(article__is_draft=False).annotate(
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1199, in build_filter
+    lookups, value)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\fields\related.py", line 1772, in get_lookup_constraint
+    raise TypeError('Related Field got invalid lookup: %s' % lookup_type)
+TypeError: Related Field got invalid lookup: is_draft
+[2016-03-25 17:19:03,168] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 208, in render
+    with context.bind_template(self):
+  File "c:\python27\Lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\context.py", line 241, in bind_template
+    updates.update(processor(self.request))
+  File "E:\mygit\blog\lcnet_blog\blog\custom_processors.py", line 8, in category
+    category = Category.objects.filter(article__is_draft=False).annotate(
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 679, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 697, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1309, in add_q
+    clause, require_inner = self._add_q(where_part, self.used_aliases)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1337, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1199, in build_filter
+    lookups, value)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\fields\related.py", line 1772, in get_lookup_constraint
+    raise TypeError('Related Field got invalid lookup: %s' % lookup_type)
+TypeError: Related Field got invalid lookup: is_draft
+[2016-03-25 17:19:39,894] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 17:31:08,845] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 17:31:08,936] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 209, in render
+    return self._render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\defaulttags.py", line 576, in render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 211, in render
+    return self._render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 92, in render
+    output = force_text(output)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\encoding.py", line 92, in force_text
+    s = six.text_type(s)
+  File "E:\mygit\blog\lcnet_blog\blog\models.py", line 53, in __unicode__
+    if self.parent:
+AttributeError: 'Category' object has no attribute 'parent'
+[2016-03-25 17:31:08,936] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 209, in render
+    return self._render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\defaulttags.py", line 576, in render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 211, in render
+    return self._render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 79, in render_node
+    return node.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\debug.py", line 92, in render
+    output = force_text(output)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\encoding.py", line 92, in force_text
+    s = six.text_type(s)
+  File "E:\mygit\blog\lcnet_blog\blog\models.py", line 53, in __unicode__
+    if self.parent:
+AttributeError: 'Category' object has no attribute 'parent'
+[2016-03-25 17:31:23,200] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1548, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\views\main.py", line 81, in __init__
+    self.queryset = self.get_queryset(request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\views\main.py", line 324, in get_queryset
+    filters_use_distinct) = self.get_filters(request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\views\main.py", line 133, in get_filters
+    self.model, self.model_admin, field_path=field_path)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\filters.py", line 161, in create
+    model, model_admin, field_path=field_path)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\filters.py", line 175, in __init__
+    self.lookup_choices = self.field_choices(field, request, model_admin)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\filters.py", line 197, in field_choices
+    return field.get_choices(include_blank=False)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\fields\__init__.py", line 823, in get_choices
+    limit_choices_to)]
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\encoding.py", line 56, in smart_text
+    return force_text(s, encoding, strings_only, errors)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\encoding.py", line 92, in force_text
+    s = six.text_type(s)
+  File "E:\mygit\blog\lcnet_blog\blog\models.py", line 53, in __unicode__
+    if self.parent:
+AttributeError: 'Category' object has no attribute 'parent'
+[2016-03-25 17:31:23,200] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /admin/blog/article/
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 110, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\options.py", line 1548, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\views\main.py", line 81, in __init__
+    self.queryset = self.get_queryset(request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\views\main.py", line 324, in get_queryset
+    filters_use_distinct) = self.get_filters(request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\views\main.py", line 133, in get_filters
+    self.model, self.model_admin, field_path=field_path)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\filters.py", line 161, in create
+    model, model_admin, field_path=field_path)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\filters.py", line 175, in __init__
+    self.lookup_choices = self.field_choices(field, request, model_admin)
+  File "E:\mygit\blog\venv\lib\site-packages\django\contrib\admin\filters.py", line 197, in field_choices
+    return field.get_choices(include_blank=False)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\fields\__init__.py", line 823, in get_choices
+    limit_choices_to)]
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\encoding.py", line 56, in smart_text
+    return force_text(s, encoding, strings_only, errors)
+  File "E:\mygit\blog\venv\lib\site-packages\django\utils\encoding.py", line 92, in force_text
+    s = six.text_type(s)
+  File "E:\mygit\blog\lcnet_blog\blog\models.py", line 53, in __unicode__
+    if self.parent:
+AttributeError: 'Category' object has no attribute 'parent'
+[2016-03-25 17:31:45,727] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 20:45:38,844] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 20:45:38,878] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "E:\mygit\blog\lcnet_blog\blog\views.py", line 52, in get_context_data
+    return super(IndexView,self).get_context_data(**kwargs)
+  File "E:\mygit\blog\lcnet_blog\blog\views.py", line 21, in get_context_data
+    context=super(BaseMixin,self).get_context_data(**kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\list.py", line 134, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\list.py", line 78, in paginate_queryset
+    page = paginator.page(page_number)
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 50, in page
+    number = self.validate_number(number)
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 39, in validate_number
+    if number > self.num_pages:
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 86, in _get_num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 72, in _get_count
+    self._count = self.object_list.count()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 318, in count
+    return self.query.get_count(using=self.db)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 466, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 447, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 840, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+ProgrammingError: (1146, "Table 'lcnet.blog_article' doesn't exist")
+[2016-03-25 20:45:38,878] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "E:\mygit\blog\lcnet_blog\blog\views.py", line 52, in get_context_data
+    return super(IndexView,self).get_context_data(**kwargs)
+  File "E:\mygit\blog\lcnet_blog\blog\views.py", line 21, in get_context_data
+    context=super(BaseMixin,self).get_context_data(**kwargs)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\list.py", line 134, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+  File "E:\mygit\blog\venv\lib\site-packages\django\views\generic\list.py", line 78, in paginate_queryset
+    page = paginator.page(page_number)
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 50, in page
+    number = self.validate_number(number)
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 39, in validate_number
+    if number > self.num_pages:
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 86, in _get_num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\paginator.py", line 72, in _get_count
+    self._count = self.object_list.count()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 318, in count
+    return self.query.get_count(using=self.db)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 466, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 447, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\compiler.py", line 840, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "E:\mygit\blog\venv\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+ProgrammingError: (1146, "Table 'lcnet.blog_article' doesn't exist")
+[2016-03-25 20:56:10,443] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 21:02:31,411] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 21:17:36,984] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 21:17:52,015] [INFO] views [IndexView] : u'开始访问
+[2016-03-25 21:17:52,049] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 208, in render
+    with context.bind_template(self):
+  File "c:\python27\Lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\context.py", line 241, in bind_template
+    updates.update(processor(self.request))
+  File "E:\mygit\blog\lcnet_blog\blog\custom_processors.py", line 8, in category
+    category = Category.objects.filter(article__status=0).values('name1').annotate(
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 606, in values
+    return self._clone(klass=ValuesQuerySet, setup=True, _fields=fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 960, in _clone
+    c._setup_query()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 1136, in _setup_query
+    self.query.add_fields(self.field_names, True)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1712, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'name1' into field. Choices are: article, category, create_time, id, name, parent, parent_id, rank, status
+[2016-03-25 21:17:52,049] [ERROR] base [handle_uncaught_exception] : Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\mygit\blog\venv\lib\site-packages\django\core\handlers\base.py", line 164, in get_response
+    response = response.render()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 158, in render
+    self.content = self.rendered_content
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\backends\django.py", line 74, in render
+    return self.template.render(context)
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\base.py", line 208, in render
+    with context.bind_template(self):
+  File "c:\python27\Lib\contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "E:\mygit\blog\venv\lib\site-packages\django\template\context.py", line 241, in bind_template
+    updates.update(processor(self.request))
+  File "E:\mygit\blog\lcnet_blog\blog\custom_processors.py", line 8, in category
+    category = Category.objects.filter(article__status=0).values('name1').annotate(
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 606, in values
+    return self._clone(klass=ValuesQuerySet, setup=True, _fields=fields)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 960, in _clone
+    c._setup_query()
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\query.py", line 1136, in _setup_query
+    self.query.add_fields(self.field_names, True)
+  File "E:\mygit\blog\venv\lib\site-packages\django\db\models\sql\query.py", line 1712, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'name1' into field. Choices are: article, category, create_time, id, name, parent, parent_id, rank, status
+[2016-03-25 21:18:00,526] [INFO] views [IndexView] : u'开始访问
+[2016-03-26 16:03:04,799] [INFO] views [IndexView] : u'开始访问
