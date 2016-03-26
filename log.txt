@@ -4961,3 +4961,4 @@ Traceback (most recent call last):
 FieldError: Cannot resolve keyword 'name1' into field. Choices are: article, category, create_time, id, name, parent, parent_id, rank, status
 [2016-03-25 21:18:00,526] [INFO] views [IndexView] : u'开始访问
 [2016-03-26 16:03:04,799] [INFO] views [IndexView] : u'开始访问
+[2016-03-26 17:01:56,546] [INFO] views [IndexView] : u'开始访问
